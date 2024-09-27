@@ -467,3 +467,23 @@ FodyWeavers.xsd
 /Warehouse accounting/Warehouse accounting.sln
 /Warehouse accounting/Warehouse accounting/Warehouse accounting.vcxproj
 /Warehouse accounting/Warehouse accounting/Warehouse accounting.vcxproj.filters
+/List/Demo/Demo.vcxproj
+/List/Demo/Demo.vcxproj.filters
+/List/List.sln
+/List/Solver/Solver.vcxproj
+/List/Solver/Solver.vcxproj.filters
+/List/SolverTest/pch.cpp
+/List/SolverTest/pch.h
+/List/SolverTest/SolverTest.cpp
+/List/SolverTest/SolverTest.vcxproj
+/List/SolverTest/SolverTest.vcxproj.filters
+/List/Test/pch.cpp
+/List/Test/pch.h
+/List/Test/Test.vcxproj
+/List/Test/Test.vcxproj.filters
+/List/Test1/Test1.vcxproj
+/List/Test1/Test1.vcxproj.filters
+/List/UnitTest1/pch.cpp
+/List/UnitTest1/pch.h
+/List/UnitTest1/UnitTest1.vcxproj
+/List/UnitTest1/UnitTest1.vcxproj.filters
