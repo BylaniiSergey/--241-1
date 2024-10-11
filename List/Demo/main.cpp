@@ -17,11 +17,11 @@ int main()
     list.pop_back();
     std::cout << "Список после pop_back(): " << list << std::endl;
 
-    list.insert(0, 8);
-    std::cout << "Список после insert(0, 8): " << list << std::endl;
+    list.insert(0, 4);
+    std::cout << "Список после insert(0, 3): " << list << std::endl;
 
-    list.remove(3);
-    std::cout << "Список после remove(3): " << list << std::endl;
+    list.remove(2);
+    std::cout << "Список после remove(1): " << list << std::endl;
 
     return 0;
 }

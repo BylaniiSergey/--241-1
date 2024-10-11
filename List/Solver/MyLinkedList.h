@@ -7,6 +7,7 @@ template<typename T>
 class MyLinkedList 
 {
 private:
+    int size = 0;
     struct Node 
     {
         T data;
@@ -43,11 +44,13 @@ public:
             head = head->next;
             delete temp;
         }
+        size = 0;
     }
 
     MyLinkedList(MyLinkedList&& other) noexcept
     {
         head = other.head;
+        size = other.size;
         other.head = nullptr;
     }
 
@@ -55,6 +58,7 @@ public:
     {
         MyLinkedList temp(other);
         std::swap(this->head, temp.head);
+        std::swap(this->size, temp.size);
         return *this;
     }
 
@@ -90,6 +94,7 @@ public:
                 temp = temp->next;
             }
             temp->next = newNode;
+            ++size;
         }
     }
     
@@ -97,6 +102,7 @@ public:
     {
         Node* newNode = new Node{ value, head };
         head = newNode;
+        ++size;
     }
 
     void pop_back()
@@ -116,6 +122,7 @@ public:
         {
             temp = temp->next;
         }
+        --size;
         delete temp->next;
         temp->next = nullptr;
     }
@@ -127,6 +134,7 @@ public:
             return;
         }
         Node* temp = head;
+        --size;
         head = head->next;
         delete temp;
     }
@@ -137,8 +145,12 @@ public:
         size_t index = idx;
         Node* current = head;
         size_t curr_index = 0;
-        while (curr_index - 1 < index)
+        while (current != nullptr && curr_index - 1 < index)
         {
+            if (curr_index == index - 1)
+            {
+                break;
+            }
             current = current->next;
             curr_index++;
         }
@@ -147,23 +159,35 @@ public:
         current = current->next;
         current->data = elem;
         current->next = tmp;
+        ++size;
     }
-
 
     void remove(int idx)
     {
-        if (idx < 0) throw;
-        size_t index = idx;
+        if (idx < 0)
+        {
+            throw std::out_of_range("Индекс не может быть отрицательным");
+        }
+
+        size_t index = static_cast<size_t>(idx);
+
+        if (index >= size)
+        {
+            throw std::out_of_range("Индекс вне диапазона");
+        }
+
         Node* current = head;
         size_t curr_index = 0;
-        while (curr_index - 1 < index)
+        while (current != nullptr && curr_index < index - 1)
         {
             current = current->next;
             curr_index++;
         }
-        Node* tmp = current->next->next;
-        delete current->next;
-        current->next = tmp;
+
+        Node* tmp = current->next;
+        current->next = tmp->next;
+        delete tmp;
+        --size;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const MyLinkedList& list) 
