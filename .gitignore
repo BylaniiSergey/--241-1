@@ -457,3 +457,13 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,microsoftoffice,visualstudio,visualstudiocode
+/Warehouse accounting/Solver/Solver.vcxproj
+/Warehouse accounting/Solver/Solver.vcxproj.filters
+/Warehouse accounting/Test/pch.cpp
+/Warehouse accounting/Test/pch.h
+/Warehouse accounting/Test/Test.cpp
+/Warehouse accounting/Test/Test.vcxproj
+/Warehouse accounting/Test/Test.vcxproj.filters
+/Warehouse accounting/Warehouse accounting.sln
+/Warehouse accounting/Warehouse accounting/Warehouse accounting.vcxproj
+/Warehouse accounting/Warehouse accounting/Warehouse accounting.vcxproj.filters
