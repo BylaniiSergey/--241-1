@@ -4,9 +4,9 @@
 class Point 
 {
 public:
-    double x, y;
+    int x, y;
 
-    Point(double x = 0, double y = 0) : x(x), y(y) {}
+    Point(int x, int y) : x(x), y(y) {}
 
     bool operator==(const Point& other) const 
     {
@@ -16,5 +16,11 @@ public:
     std::string toString() const
     {
         return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const Point& point) 
+    {
+        os << point.x << " " << point.y;
+        return os;
     }
 };
