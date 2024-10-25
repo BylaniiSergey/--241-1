@@ -314,18 +314,28 @@ namespace mynamespace
     void MyLinkedList<T>::insert(int idx, T elem) 
     {
         size_t index = safe_cast_to_size_t(idx);
-        Node* current = head;
-        size_t curr_index = 0;
-        while (current != nullptr && curr_index - 1 < index)
+        if (index == 0) 
         {
-            current = current->next;
-            curr_index++;
+            Node* tmp = head;
+            head = new Node();
+            head->data = elem;
+            head->next = tmp;
         }
-        Node* tmp = current->next;
-        current->next = new Node();
-        current = current->next;
-        current->data = elem;
-        current->next = tmp;
+        else 
+        {
+            Node* current = head;
+            size_t curr_index = 0;
+            while (current != nullptr && curr_index < index - 1)
+            {
+                current = current->next;
+                curr_index++;
+            }
+            Node* tmp = current->next;
+            current->next = new Node();
+            current = current->next;
+            current->data = elem;
+            current->next = tmp;
+        }
         ++size;
     }
 
@@ -333,17 +343,25 @@ namespace mynamespace
     void MyLinkedList<T>::remove(int idx) 
     {
         size_t index = safe_cast_to_size_t(idx);
-        if (index > size) throw std::out_of_range(" Индекс вне диапазона");
-        Node* current = head;
-        size_t curr_index = 0;
-        while (current != nullptr && curr_index < index - 1)
+        if (index == 0)
         {
-            current = current->next;
-            curr_index++;
+            Node* tmp = head->next;
+            delete head;
+            head = tmp;
         }
-        Node* tmp = current->next;
-        current->next = tmp->next;
-        delete tmp;
+        else
+        {
+            Node* current = head;
+            size_t curr_index = 0;
+            while (current != nullptr && curr_index < index - 1)
+            {
+                current = current->next;
+                curr_index++;
+            }
+            Node* tmp = current->next->next;
+            delete current->next;
+            current->next = tmp;
+        }
         --size;
     }
 
