@@ -21,6 +21,15 @@ namespace mynamespace
     class MyLinkedList
     {
     private:
+        size_t safe_cast_to_size_t(int idx) 
+        {
+            if (idx < 0) 
+            {
+                throw std::out_of_range("Индекс не может быть отрицательным");
+            }
+            return static_cast<size_t>(idx);
+        }
+
         int size = 0;
         struct Node
         {
@@ -116,14 +125,14 @@ namespace mynamespace
         * Вставляет новый элемент в список по заданному индексу
         * @param idx: Индекс, по которому нужно вставить элемент, elem: Значение, которое нужно вставить
         */
-        void insert(size_t idx, T elem);
+        void insert(int idx, T elem);
 
         /**
         * @brief Метод remove()
         * Удаляет элемент из списка по заданному индексу
         * @param idx: Индекс элемента, который нужно удалить
         */
-        void remove(size_t idx);
+        void remove(int idx);
 
         /**
         * @brief Метод get_back()
@@ -302,10 +311,9 @@ namespace mynamespace
     }
 
     template<typename T>
-    void MyLinkedList<T>::insert(size_t idx, T elem) 
+    void MyLinkedList<T>::insert(int idx, T elem) 
     {
-        if (idx < 0) throw std::out_of_range(" Индекс не может быть отрицательным");
-        size_t index = idx;
+        size_t index = safe_cast_to_size_t(idx);
         Node* current = head;
         size_t curr_index = 0;
         while (current != nullptr && curr_index - 1 < index)
@@ -322,14 +330,10 @@ namespace mynamespace
     }
 
     template<typename T>
-    void MyLinkedList<T>::remove(size_t idx) 
+    void MyLinkedList<T>::remove(int idx) 
     {
-        if (idx < 0) throw std::out_of_range(" Индекс не может быть отрицательным");
-
-        size_t index = static_cast<size_t>(idx);
-
-        if (index >= size) throw std::out_of_range(" Индекс вне диапазона");
-
+        size_t index = safe_cast_to_size_t(idx);
+        if (index > size) throw std::out_of_range(" Индекс вне диапазона");
         Node* current = head;
         size_t curr_index = 0;
         while (current != nullptr && curr_index < index - 1)
@@ -337,7 +341,6 @@ namespace mynamespace
             current = current->next;
             curr_index++;
         }
-
         Node* tmp = current->next;
         current->next = tmp->next;
         delete tmp;

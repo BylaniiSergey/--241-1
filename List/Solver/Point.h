@@ -1,26 +1,17 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 
 class Point 
 {
 public:
     int x, y;
 
-    Point(int x, int y) : x(x), y(y) {}
+    Point(int x, int y);
 
-    bool operator==(const Point& other) const 
-    {
-        return x == other.x && y == other.y;
-    }
+    bool operator==(const Point& other) const;
 
-    std::string toString() const
-    {
-        return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
-    }
+    std::string toString() const;
 
-    friend std::ostream& operator<<(std::ostream& os, const Point& point) 
-    {
-        os << point.x << " " << point.y;
-        return os;
-    }
+    friend std::ostream& operator<<(std::ostream& os, const Point& point);
 };
