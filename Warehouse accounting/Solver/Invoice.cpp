@@ -1,15 +1,31 @@
 #include "Invoice .h"
-#include <iostream>
 
-void Invoice::addProduct(Product* product) 
+using namespace std;
+
+using namespace bakery::invoice;
+
+void Invoice::PrintInvoice() const
 {
-    products.push_back(product);
+	cout << "Накладная #" << invoice_number << endl;
+	cout << "Дата: " << date << endl;
+	cout << "Товары:" << endl;
+	for (const auto& product : products) {
+		cout << product << endl;
+	}
+	cout << "Общая сумма: " << fixed << setprecision(2) << CalculateTotal() << " руб." << endl;
 }
 
-void Invoice::showInvoice() const 
+double Invoice::CalculateTotal() const
 {
-    for (const auto& product : products) 
-    {
-        std::cout << "Invoice Product: " << product->getName() << ", Price: " << product->getPrice() << std::endl;
-    }
+	double total = 0.0;
+	for (const auto& product : products)
+	{
+		total += product.GetPrice();
+	}
+	return total;
+}
+
+void Invoice::AddProduct(const product::Product& product)
+{
+	products.push_back(product);
 }

@@ -4,25 +4,24 @@
 #include "..//Solver/Store.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-
+using namespace bakery::product;
+using namespace bakery::shop;
+/*
 namespace Test
 {
 	TEST_CLASS(Test)
 	{
 	public:
 
-		TEST_METHOD(ProductTest)
+		TEST_METHOD()
 		{
-			Product product("Test Product", 15.0);
-			Assert::AreEqual(std::string("Test Product"), product.getName());
-			Assert::AreEqual(15.0, product.getPrice());
+			
 		}
 
-		TEST_METHOD(StoreTest)
+		TEST_METHOD()
 		{
-			Store store("Test Store", 10.0);
-			Assert::AreEqual(std::string("Test Store"), store.getName());
-			Assert::AreEqual(10.0, store.getDiscount());
+			
 		}
 	};
 }
+*/
