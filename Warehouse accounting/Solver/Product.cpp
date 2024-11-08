@@ -8,15 +8,15 @@ Product::Product(const string& item_number, const string& product_name, double p
 {
 	if (empty(item_number))
 	{
-		throw invalid_argument("Не указан артикул товара!");
+		throw invalid_argument("РќРµ СѓРєР°Р·Р°РЅ Р°СЂС‚РёРєСѓР» С‚РѕРІР°СЂР°!");
 	}
 	if (empty(product_name))
 	{
-		throw invalid_argument("Не указано название товара!");
+		throw invalid_argument("РќРµ СѓРєР°Р·Р°РЅРѕ РЅР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°!");
 	}
 	if (price <= 0.0)
 	{
-		throw out_of_range("Цена товара должна выражаться положительным числом!");
+		throw out_of_range("Р¦РµРЅР° С‚РѕРІР°СЂР° РґРѕР»Р¶РЅР° РІС‹СЂР°Р¶Р°С‚СЊСЃСЏ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј!");
 	}
 	this->item_number = item_number;
 	this->product_name = product_name;
@@ -36,7 +36,7 @@ ostream& bakery::product::operator<<(ostream& os, const Product& product)
 string Product::ToString() const
 {
 	stringstream buffer{};
-	buffer << "Артикул: " << this->item_number << "; название: " << this->product_name << "; цена: " << this->price;
+	buffer << "РђСЂС‚РёРєСѓР»: " << this->item_number << "; РЅР°Р·РІР°РЅРёРµ: " << this->product_name << "; С†РµРЅР°: " << this->price;
 	return buffer.str();
 }
 

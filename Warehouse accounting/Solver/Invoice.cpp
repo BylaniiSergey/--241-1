@@ -6,13 +6,13 @@ using namespace bakery::invoice;
 
 void Invoice::PrintInvoice() const
 {
-	cout << "Íàêëàäíàÿ #" << invoice_number << endl;
-	cout << "Äàòà: " << date << endl;
-	cout << "Òîâàðû:" << endl;
+	cout << "ÐÐ°ÐºÐ»Ð°Ð´Ð½Ð°Ñ #" << invoice_number << endl;
+	cout << "Ð”Ð°Ñ‚Ð°: " << date << endl;
+	cout << "Ð¢Ð¾Ð²Ð°Ñ€Ñ‹:" << endl;
 	for (const auto& product : products) {
 		cout << product << endl;
 	}
-	cout << "Îáùàÿ ñóììà: " << fixed << setprecision(2) << CalculateTotal() << " ðóá." << endl;
+	cout << "ÐžÐ±Ñ‰Ð°Ñ ÑÑƒÐ¼Ð¼Ð°: " << fixed << setprecision(2) << CalculateTotal() << " Ñ€ÑƒÐ±." << endl;
 }
 
 double Invoice::CalculateTotal() const

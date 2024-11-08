@@ -8,15 +8,15 @@ Store::Store(const int taxpayer_id, const string& shop_name, const string& shop_
 {
 	if (taxpayer_id <= 0)
 	{
-		throw out_of_range("ÈÍÍ äîëæåí âûðàæàòüñÿ ïîëîæèòåëüíûì öåëûì ÷èñëîì!");
+		throw out_of_range("Ð˜ÐÐ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð²Ñ‹Ñ€Ð°Ð¶Ð°Ñ‚ÑŒÑÑ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼ Ñ†ÐµÐ»Ñ‹Ð¼ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!");
 	}
 	if (empty(shop_name))
 	{
-		throw invalid_argument("Íå óêàçàíî íàçâàíèå ìàãàçèíà!");
+		throw invalid_argument("ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð°!");
 	}
 	if (empty(shop_address))
 	{
-		throw invalid_argument("Íå óêàçàí àäðåñ ìàãàçèíà!");
+		throw invalid_argument("ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½ Ð°Ð´Ñ€ÐµÑ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð°!");
 	}
 	this->taxpayer_id = taxpayer_id;
 	this->shop_name = shop_name;
@@ -36,6 +36,6 @@ ostream& bakery::shop::operator<<(ostream& os, const Store& shop)
 string Store::ToString() const
 {
 	stringstream buffer{};
-	buffer << "ÈÍÍ: " << this->taxpayer_id << "; íàçâàíèå ìàãàçèíà: " << this->shop_name << "; àäðåñ: " << this->shop_address;
+	buffer << "Ð˜ÐÐ: " << this->taxpayer_id << "; Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¼Ð°Ð³Ð°Ð·Ð¸Ð½Ð°: " << this->shop_name << "; Ð°Ð´Ñ€ÐµÑ: " << this->shop_address;
 	return buffer.str();
 }

@@ -37,7 +37,7 @@ const bakery::product::Product* bakery::warehouse::Warehouse::FindProduct(const 
 
 void Warehouse::PrintInventory() const
 {
-	cout << "Òîâàðû íà ñêëàäå:" << endl;
+	cout << "Ð¢Ð¾Ð²Ð°Ñ€Ñ‹ Ð½Ð° ÑÐºÐ»Ð°Ð´Ðµ:" << endl;
 	for (const auto& product : products)
 	{
 		cout << product << endl;
