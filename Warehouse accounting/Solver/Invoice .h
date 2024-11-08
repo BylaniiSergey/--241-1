@@ -10,50 +10,50 @@ using namespace std;
 namespace bakery::invoice
 {
     /**
-    * @brief Класс Накладная.
+    * @brief РљР»Р°СЃСЃ РќР°РєР»Р°РґРЅР°СЏ.
     */
     class Invoice final
     {
     private:
         /**
-        * @brief Номер накладной.
+        * @brief РќРѕРјРµСЂ РЅР°РєР»Р°РґРЅРѕР№.
         */
         string invoice_number;
         /**
-        * @brief Дата накладной.
+        * @brief Р”Р°С‚Р° РЅР°РєР»Р°РґРЅРѕР№.
         */
         string date;
         /**
-        * @brief Список товаров в накладной.
+        * @brief РЎРїРёСЃРѕРє С‚РѕРІР°СЂРѕРІ РІ РЅР°РєР»Р°РґРЅРѕР№.
         */
         vector<product::Product> products;
     public:
         /**
-        * @brief Конструктор.
-        * @param invoice_number - номер накладной.
-        * @param date - дата накладной.
+        * @brief РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
+        * @param invoice_number - РЅРѕРјРµСЂ РЅР°РєР»Р°РґРЅРѕР№.
+        * @param date - РґР°С‚Р° РЅР°РєР»Р°РґРЅРѕР№.
         */
         Invoice(const string& invoice_number, const string& date) : invoice_number(invoice_number), date(date) {};
 
         /**
-        * @brief Метод для добавления товара в накладную.
-        * @param product - товар, который нужно добавить.
+        * @brief РњРµС‚РѕРґ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ С‚РѕРІР°СЂР° РІ РЅР°РєР»Р°РґРЅСѓСЋ.
+        * @param product - С‚РѕРІР°СЂ, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ.
         */
         void AddProduct(const product::Product& product);
 
         /**
-        * @brief Метод для расчета общей суммы накладной.
-        * @return Возвращает общую сумму накладной.
+        * @brief РњРµС‚РѕРґ РґР»СЏ СЂР°СЃС‡РµС‚Р° РѕР±С‰РµР№ СЃСѓРјРјС‹ РЅР°РєР»Р°РґРЅРѕР№.
+        * @return Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±С‰СѓСЋ СЃСѓРјРјСѓ РЅР°РєР»Р°РґРЅРѕР№.
         */
         double CalculateTotal() const;
 
         /**
-        * @brief Метод для вывода информации о накладной.
+        * @brief РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ РЅР°РєР»Р°РґРЅРѕР№.
         */
         void PrintInvoice() const;
 
         /**
-        * @brief Деструктор (создан по умолчанию).
+        * @brief Р”РµСЃС‚СЂСѓРєС‚РѕСЂ (СЃРѕР·РґР°РЅ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ).
         */
         ~Invoice() = default;
     };
