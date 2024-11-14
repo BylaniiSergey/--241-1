@@ -131,13 +131,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Invoice .h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Product.h" />
     <ClInclude Include="Store.h" />
     <ClInclude Include="Warehouse.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Invoice.cpp" />
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="Warehouse.cpp" />
