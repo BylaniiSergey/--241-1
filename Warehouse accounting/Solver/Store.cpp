@@ -1,41 +1,40 @@
 #include "Store.h"
 
-using namespace std;
-
-using namespace bakery::shop;
-
-Store::Store(const int taxpayer_id, const string& shop_name, const string& shop_address)
+namespace bakery::shop 
 {
-	if (taxpayer_id <= 0)
+    Store::Store(int taxpayer_id, const std::string& shop_name, const std::string& shop_address): taxpayer_id(taxpayer_id), shop_name(shop_name), shop_address(shop_address) 
 	{
-		throw out_of_range("ИНН должен выражаться положительным целым числом!");
+		if (taxpayer_id <= 0)
+		{
+			throw std::out_of_range("ИНН должен выражаться положительным целым числом!");
+		}
+		if (empty(shop_name))
+		{
+			throw std::invalid_argument("Не указано название магазина!");
+		}
+		if (empty(shop_address))
+		{
+			throw std::invalid_argument("Не указан адрес магазина!");
+		}
+		this->taxpayer_id = taxpayer_id;
+		this->shop_name = shop_name;
+		this->shop_address = shop_address;
 	}
-	if (empty(shop_name))
+
+	std::string Store::toString() const
 	{
-		throw invalid_argument("Не указано название магазина!");
+		std::stringstream buffer;
+		buffer << "Магазин: " << this->shop_name << "; Адрес: " << this->shop_address << "; ИНН: " << this->taxpayer_id;
+		return buffer.str();
 	}
-	if (empty(shop_address))
+
+	bool Store::operator==(const Store& other_shop)
 	{
-		throw invalid_argument("Не указан адрес магазина!");
+		return (this->taxpayer_id == other_shop.taxpayer_id) and (this->shop_name == other_shop.shop_name) and (this->shop_address == other_shop.shop_address);
 	}
-	this->taxpayer_id = taxpayer_id;
-	this->shop_name = shop_name;
-	this->shop_address = shop_address;
-}
 
-bool Store::operator==(const Store& other_shop)
-{
-	return (this->taxpayer_id == other_shop.taxpayer_id) and (this->shop_name == other_shop.shop_name) and (this->shop_address == other_shop.shop_address);
-}
-
-ostream& bakery::shop::operator<<(ostream& os, const Store& shop)
-{
-	return os << shop.ToString();
-}
-
-string Store::ToString() const
-{
-	stringstream buffer{};
-	buffer << "ИНН: " << this->taxpayer_id << "; название магазина: " << this->shop_name << "; адрес: " << this->shop_address;
-	return buffer.str();
+	std::ostream& bakery::shop::operator<<(std::ostream& os, const Store& shop)
+	{
+		return os << shop.toString();
+	}
 }

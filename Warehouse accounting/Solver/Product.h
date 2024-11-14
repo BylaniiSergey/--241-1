@@ -1,39 +1,42 @@
+#ifndef PRODUCT_H
+#define PRODUCT_H
+
 #include <iostream>
 #include <sstream>
 #include <string>
 
-using namespace std;
-
 namespace bakery::product
 {
-	/**
-	* @brief Класс Товар.
-	*/
-	class Product final
-	{
-	private:
-		/**
-		* @brief Артикул товара.
-		*/
-		string item_number;
+    /**
+    * @brief Класс Товар.
+    *
+    * Данный класс представляет товар, который хранится на складе.
+    * Он содержит информацию о товаре, такую как артикул, название и цена.
+    */
+    class Product final
+    {
+    private:
+        /**
+        * @brief Артикул товара.
+        * Уникальный идентификатор товара, используемый для его идентификации.
+        */
+        std::string item_number;
 
-		/**
-		* @brief Название товара.
-		*/
-		string product_name;
+        /**
+        * @brief Название товара.
+        * Наименование товара, которое будет отображаться пользователю.
+        */
+        std::string product_name;
 
-		/**
-		* @brief Цена товара (за 1 шт.).
-		*/
-		double price;
-	public:
-		/**
-			* @brief Конструктор.
-			* @param item_number - артикул товара.
-			* @param product_name - название товара.
-			* @param price - цена товара (за 1 шт.).
-			*/
-		Product(const string& item_number, const string& product_name, double price);
+        /**
+        * @brief Цена товара (за 1 шт.).
+        * Стоимость товара за одну единицу.
+        */
+        double price;
+
+    public:
+		
+		Product(const std::string& item_number, const std::string& product_name, double price);
 
 		/**
 		* @brief Конструктор перемещения (создан по умолчанию).
@@ -73,19 +76,24 @@ namespace bakery::product
 		* @param product - товар.
 		* @return Возвращает поток с введённой в него информацией о товаре.
 		*/
-		friend ostream& operator<<(ostream& os, const Product& product);
+		friend std::ostream& operator<<(std::ostream& os, const Product& product);
 
 		/**
 		* @brief Метод сериализации в строку ToString().
 		* @return Возвращает строку, в которой содержится информация о товаре.
 		*/
-		string ToString() const;
+		std::string toString() const;
 
 		/**
 		* @brief Деструктор (создан по умолчанию).
 		*/
 		~Product() = default;
-
+		
+		/**
+		* @brief Получение цены товара.
+		* @return Возвращает цену товара (за 1 шт.).
+		*/
 		double GetPrice() const;
-	};
+    };
 }
+#endif

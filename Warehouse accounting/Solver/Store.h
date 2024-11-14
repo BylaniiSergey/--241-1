@@ -2,38 +2,49 @@
 #include <sstream>
 #include <string>
 
-using namespace std;
-
-namespace bakery::shop
+namespace bakery::shop 
 {
     /**
     * @brief Класс Магазин.
+    * Данный класс представляет магазин с его уникальными характеристиками, такими как идентификационный номер налогоплательщика, название и адрес.
     */
-    class Store final
+    class Store final 
     {
     private:
         /**
-        * @brief ИНН.
+        * @brief Идентификационный номер налогоплательщика.
+        * Уникальный номер, присвоенный магазину для налоговых целей.
         */
         int taxpayer_id;
 
         /**
         * @brief Название магазина.
+        * Наименование магазина, которое будет отображаться клиентам.
         */
-        string shop_name;
+        std::string shop_name;
 
         /**
         * @brief Адрес магазина.
+        * Физический адрес, по которому расположен магазин.
         */
-        string shop_address;
-	public:
-		/**
-		* @brief Конструктор.
-		* @param taxpayer_id - ИНН.
-		* @param shop_name - название магазина.
-		* @param shop_address - адрес магазина.
-		*/
-		Store(const int taxpayer_id, const string& shop_name, const string& shop_address);
+        std::string shop_address;
+
+    public:
+        /**
+        * @brief Конструктор класса Store.
+        * Инициализирует новый объект магазина с заданными параметрами.
+        * @param taxpayer_id - идентификационный номер налогоплательщика.
+        * @param shop_name - название магазина.
+        * @param shop_address - адрес магазина.
+        */
+        Store(int taxpayer_id, const std::string& shop_name, const std::string& shop_address);
+
+        /**
+        * @brief Метод сериализации в строку ToString().
+        * Формирует строку, содержащую информацию о магазине в удобочитаемом формате.
+        * @return Возвращает строку, содержащую название магазина, адрес и идентификационный номер налогоплательщика.
+        */
+        std::string toString() const;
 
 		/**
 		* @brief Конструктор перемещения (создан по умолчанию).
@@ -73,13 +84,7 @@ namespace bakery::shop
 		* @param shop - магазин.
 		* @return Возвращает поток с введённой в него информацией о магазине.
 		*/
-		friend ostream& operator<<(ostream& os, const Store& shop);
-
-		/**
-		* @brief Метод сериализации в строку ToString().
-		* @return Возвращает строку, в которой содержится информация о магазине.
-		*/
-		string ToString() const;
+		friend std::ostream& operator<<(std::ostream& os, const Store& shop);
 
 		/**
 		* @brief Деструктор (создан по умолчанию).
