@@ -1,4 +1,7 @@
 #include <vector>
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <memory>
 #include "Product.h"
 
@@ -31,5 +34,10 @@ namespace bakery::warehouse
         * Печатает список всех продуктов, находящихся на складе.
         */
         void PrintInventory() const;
+
+		/**
+		* @brief Деструктор (создан по умолчанию).
+		*/
+		~Warehouse() = default;
     };
 }
