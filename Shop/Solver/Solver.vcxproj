@@ -141,7 +141,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Invoice.cpp" />
     <ClCompile Include="Product.cpp" />
-    <ClCompile Include="Stor.cpp" />
+    <ClCompile Include="Store.cpp" />
     <ClCompile Include="Warehoese.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

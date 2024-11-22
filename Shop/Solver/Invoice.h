@@ -2,7 +2,8 @@
 
 #include <string>
 #include <vector>
-#include <memory>
+#include <chrono>
+#include <sstream>
 #include "Store.h"
 #include "Client.h"
 #include "Product.h"
@@ -17,9 +18,9 @@ namespace bakery::invoice
     {
     private:
         std::string invoice_id;///< Идентификатор накладной
-        std::string issue_date;///< Дата выписки накладной
-        const bakery::shop::Store& store;///< Магазин, выписавший накладную
-        const bakery::client::Client& client;///< Клиент, которому выписана накладная
+        std::chrono::system_clock::time_point issue_date; ///< Дата выписки накладной
+        std::shared_ptr<const bakery::shop::Store> store;
+        std::shared_ptr<const bakery::client::Client> client;
         std::vector<std::shared_ptr<bakery::product::Product>> products; ///< Список товаров в накладной
 
     public:
@@ -31,8 +32,11 @@ namespace bakery::invoice
          * @param invoice_id Идентификатор накладной.
          * @param issue_date Дата выписки накладной.
          */
-        Invoice(const bakery::shop::Store& store, const bakery::client::Client& client, const std::string& invoice_id, const std::string& issue_date);
-
+        Invoice(std::shared_ptr<const bakery::shop::Store> store,
+            std::shared_ptr<const bakery::client::Client> client,
+            const std::string& invoice_id,
+            const std::string& issue_date_str);
+        
         /**
          * @brief Метод добавления продукта в накладную.
          * Добавляет указатель на продукт в список товаров накладной.
@@ -50,7 +54,7 @@ namespace bakery::invoice
          * @brief Метод расчета общей стоимости накладной с учетом скидки клиента.
          * @return Возвращает общую стоимость накладной.
          */
-        double getTotalCost() const;
+        double GetTotalCost() const;
 
         /**
          * @brief Конструктор перемещения (создан по умолчанию).

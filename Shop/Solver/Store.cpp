@@ -37,4 +37,9 @@ namespace bakery::shop
 	{
 		return os << shop.toString();
 	}
+
+	const std::string& bakery::shop::Store::GetName() const
+	{
+		return shop_name;
+	}
 }

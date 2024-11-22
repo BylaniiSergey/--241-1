@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -78,5 +79,7 @@ namespace bakery::client
 		~Client() = default;
 
 		double GetDiscount() const;
+
+		std::string GetName() const;
 	};
 }

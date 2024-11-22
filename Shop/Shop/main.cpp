@@ -7,8 +7,8 @@
 #include "..//Solver/Invoice.h"
 
 using namespace bakery::warehouse;
-using namespace bakery::product;
 using namespace bakery::shop;
+using namespace bakery::product;
 using namespace bakery::client;
 using namespace bakery::invoice;
 
@@ -27,33 +27,18 @@ int main()
     auto product2 = std::make_shared<Product>("002", "Телефон", 25000.0);
     auto product3 = std::make_shared<Product>("003", "Яйца", 130.0);
 
-    // Добавление продуктов на склад
-    warehouse.AddProduct(product1);
-    warehouse.AddProduct(product2);
-    warehouse.AddProduct(product3);
-
-
-    // Вывод информации о всех товарах на складе
-    warehouse.PrintInventory();
-
     // Создание магазина
-    bakery::shop::Store store1(123456789, "Магазин выпечки", "Улица Пекарей д.1");
-    bakery::shop::Store store2(987654321, "Магазин электронники", "Пушкинская улица д.14");
-    bakery::shop::Store store3(13580, "Магазин продуктов", "Улица Артюшина д.32");
-    std::cout << store1.toString() << std::endl;
-    std::cout << store2.toString() << std::endl;
-    std::cout << store3.toString() << std::endl;
+    auto store1 = std::make_shared<const bakery::shop::Store>(123456789, "Магазин выпечки", "Улица Пекарей д.1");
+    auto store2 = std::make_shared<const bakery::shop::Store>(987654321, "Магазин электронники", "Пушкинская улица д.14");
+    auto store3 = std::make_shared<const bakery::shop::Store>(13580, "Магазин продуктов", "Улица Артюшина д.32");
 
     // Создание клиентов
-    bakery::client::Client client1("Иванов И.И.", 10.0);
-    bakery::client::Client client2("Петрова А.А.", 15.0);
-    bakery::client::Client client3("Аксютин В.В.", 5.0);
-    std::cout << client1.toString() << std::endl;
-    std::cout << client2.toString() << std::endl;
-    std::cout << client3.toString() << std::endl;
+    auto client1 = std::make_shared<const bakery::client::Client>("Иванов И.И.", 10.0);
+    auto client2 = std::make_shared<const bakery::client::Client>("Петрова А.А.", 15.0);
+    auto client3 = std::make_shared<const bakery::client::Client>("Аксютин В.В.", 5.0);
 
     // Создание накладной
-    bakery::invoice::Invoice invoice(store1, client1, "INV001", "2024-11-22");
+    bakery::invoice::Invoice invoice(store2, client1, std::string("INV001"), std::string(""));
 
     // Добавление товаров в накладную
     invoice.addProduct(product1);

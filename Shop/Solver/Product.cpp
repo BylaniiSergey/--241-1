@@ -22,6 +22,11 @@ namespace bakery::product
         this->price = price;
     }
 
+    std::shared_ptr<Product> Product::GetProduct(const std::string& item_number, const std::string& product_name, double price)
+    {
+        return std::make_shared<Product>(item_number, product_name, price);
+    }
+
     std::string Product::toString() const
     {
         std::stringstream buffer;
@@ -39,7 +44,7 @@ namespace bakery::product
         return this->item_number == other_product.item_number;
     }
 
-    std::ostream& bakery::product::operator<<(std::ostream& os, const Product& product)
+    std::ostream& operator<<(std::ostream& os, const Product& product)
     {
         return os << product.toString();
     }

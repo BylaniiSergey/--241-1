@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -91,5 +92,7 @@ namespace bakery::shop
 		* @brief Деструктор (создан по умолчанию).
 		*/
 		~Store() = default;
+
+		const std::string& GetName() const;
 	};
 }

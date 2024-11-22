@@ -1,10 +1,13 @@
 ﻿#pragma once
-#ifndef PRODUCT_H
-#define PRODUCT_H
-
+#include <vector>
 #include <iostream>
 #include <sstream>
 #include <string>
+
+namespace bakery::invoice
+{
+	class Invoice;
+}
 
 namespace bakery::product
 {
@@ -34,10 +37,14 @@ namespace bakery::product
 		* Стоимость товара за одну единицу.
 		*/
 		double price;
-
+		
+		std::vector<std::shared_ptr<bakery::invoice::Invoice*>> invoices;
+		
 	public:
 
 		Product(const std::string& item_number, const std::string& product_name, double price);
+
+		static std::shared_ptr<Product> GetProduct(const std::string& item_number, const std::string& product_name, double price);
 
 		/**
 		* @brief Конструктор перемещения (создан по умолчанию).
@@ -97,4 +104,3 @@ namespace bakery::product
 		double GetPrice() const;
 	};
 }
-#endif

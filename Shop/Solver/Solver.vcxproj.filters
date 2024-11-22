@@ -38,7 +38,7 @@
     <ClCompile Include="Product.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Stor.cpp">
+    <ClCompile Include="Store.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Warehoese.cpp">

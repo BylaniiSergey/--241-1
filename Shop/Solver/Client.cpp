@@ -26,4 +26,9 @@ namespace bakery::client
     {
         return discount;
     }
+
+    std::string bakery::client::Client::GetName() const
+    {
+        return name;
+    }
 }
