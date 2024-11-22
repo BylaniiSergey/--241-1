@@ -21,4 +21,9 @@ namespace bakery::client
     {
         return os << product.toString();
     }
+
+    double Client::GetDiscount() const
+    {
+        return discount;
+    }
 }

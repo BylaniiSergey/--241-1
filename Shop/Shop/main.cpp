@@ -4,11 +4,13 @@
 #include "..//Solver/Product.h"
 #include "..//Solver/Store.h"
 #include "..//Solver/Warehouse.h"
+#include "..//Solver/Invoice.h"
 
 using namespace bakery::warehouse;
 using namespace bakery::product;
 using namespace bakery::shop;
 using namespace bakery::client;
+using namespace bakery::invoice;
 
 /**
 * @brief Точка входа в программу
@@ -35,14 +37,25 @@ int main()
     warehouse.PrintInventory();
 
     // Создание магазина
-    Store store(123456789, "Магазин выпечки", "Улица Пекарей, 1");
+    bakery::shop::Store store(123456789, "Магазин выпечки", "Улица Пекарей, 1");
     std::cout << store.toString() << std::endl;
 
     // Создание клиентов
-    Client client1("Иванов И.И.", 10.0);
-    Client client2("Петрова А.А.", 15.0);
+    bakery::client::Client client1("Иванов И.И.", 10.0);
+    bakery::client::Client client2("Петрова А.А.", 15.0);
     std::cout << client1.toString() << std::endl;
     std::cout << client2.toString() << std::endl;
+    
+
+    // Создание накладной
+    bakery::invoice::Invoice invoice(store, client1, "INV001", "2023-10-01");
+
+    // Добавление товаров в накладную
+    invoice.addProduct(product1);
+    invoice.addProduct(product2);
+
+    // Вывод наклодной
+    std::cout << invoice.toString() << std::endl;
 
     return 0;
 }

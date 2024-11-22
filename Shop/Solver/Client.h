@@ -76,5 +76,7 @@ namespace bakery::client
 		* @brief Деструктор (создан по умолчанию).
 		*/
 		~Client() = default;
+
+		double GetDiscount() const;
 	};
 }
