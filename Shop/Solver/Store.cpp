@@ -2,6 +2,8 @@
 
 namespace bakery::shop
 {
+	Store::Store(const std::string& name) : shop_name(name) {}
+
 	Store::Store(int taxpayer_id, const std::string& shop_name, const std::string& shop_address) : taxpayer_id(taxpayer_id), shop_name(shop_name), shop_address(shop_address)
 	{
 		if (taxpayer_id <= 0)
@@ -28,9 +30,11 @@ namespace bakery::shop
 		return buffer.str();
 	}
 
-	bool Store::operator==(const Store& other_shop)
+	bool operator==(const Store& lhs, const Store& rhs)
 	{
-		return (this->taxpayer_id == other_shop.taxpayer_id) and (this->shop_name == other_shop.shop_name) and (this->shop_address == other_shop.shop_address);
+		return (lhs.taxpayer_id == rhs.taxpayer_id) &&
+			(lhs.shop_name == rhs.shop_name) &&
+			(lhs.shop_address == rhs.shop_address);
 	}
 
 	std::ostream& bakery::shop::operator<<(std::ostream& os, const Store& shop)
@@ -41,5 +45,15 @@ namespace bakery::shop
 	const std::string& bakery::shop::Store::GetName() const
 	{
 		return shop_name;
+	}
+
+	const std::string& Store::GetAddress() const
+	{
+		return shop_address;
+	}
+
+	int Store::GetTaxpayerId() const
+	{
+		return taxpayer_id;
 	}
 }

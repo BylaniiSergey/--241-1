@@ -12,7 +12,7 @@ namespace bakery::client
         return buffer.str();
     }
 
-    bool Client::operator==(const Client& other_product)
+    bool Client::operator==(const Client& other_product) const
     {
         return this->name == other_product.name;
     }

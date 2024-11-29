@@ -6,7 +6,7 @@ namespace bakery::invoice
     Invoice::Invoice(std::shared_ptr<const bakery::shop::Store> store,
         std::shared_ptr<const bakery::client::Client> client,
         const std::string& invoice_id,
-        const std::string& issue_date_str)
+        std::chrono::system_clock::time_point issue_date)
         : store(store), client(client), invoice_id(invoice_id), issue_date((issue_date)) 
     {
         if (!store || !client)
@@ -45,5 +45,29 @@ namespace bakery::invoice
         }
         total -= total * (*client).GetDiscount() /100;
         return total;
+    }
+
+    std::string Invoice::GetInvoiceId() const
+    {
+        return invoice_id;
+    }
+
+    std::chrono::system_clock::time_point Invoice::GetIssueDate() const
+    {
+        return issue_date;
+    }
+
+    std::shared_ptr<const bakery::shop::Store> Invoice::GetStore() const
+    {
+        return store;
+    }
+
+    std::shared_ptr<const bakery::client::Client> Invoice::GetClient() const
+    {
+        return client;
+    }
+    const std::vector<std::shared_ptr<bakery::product::Product>>& Invoice::GetProducts() const
+    {
+        return products;
     }
 }

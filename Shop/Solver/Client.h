@@ -63,7 +63,7 @@ namespace bakery::client
 		* @param other_client - клиент, с которым будем сравнивать.
 		* @return Возвращает true, если два объекта равны, в противном случае - false.
 		*/
-		bool operator==(const Client& other_client);
+		bool operator==(const Client& other_product) const;
 
 		/**
 		* @brief Переопределение оператора сдвига влево.

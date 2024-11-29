@@ -17,4 +17,8 @@ namespace bakery::warehouse
             std::cout << product->toString() << std::endl;
         }
     }
+    const std::vector<std::shared_ptr<bakery::product::Product>>& Warehouse::GetProducts()
+    {
+        return products;
+    }
 }

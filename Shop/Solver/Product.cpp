@@ -39,9 +39,20 @@ namespace bakery::product
         return price;
     }
 
-    bool Product::operator==(const Product& other_product)
+    std::string Product::GetItemNumber() const
     {
-        return this->item_number == other_product.item_number;
+        return item_number;
+
+    }
+
+    std::string Product::GetProductName() const
+    {
+        return product_name;
+    }
+
+    bool operator==(const Product& lhs, const Product& rhs)
+    {
+        return lhs.item_number == rhs.item_number;
     }
 
     std::ostream& operator<<(std::ostream& os, const Product& product)

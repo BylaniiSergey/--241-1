@@ -6,16 +6,57 @@
 #include "..//Solver/Warehouse.h"
 #include "..//Solver/Invoice.h"
 
+using namespace bakery::invoice;
+using namespace bakery::shop;
+using namespace bakery::client;
+using namespace bakery::product;
+
+/**
+* @brief Точка входа в программу
+* @return 0 в случае успеха
+*/
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    // Create a store
+    auto store = std::make_shared<Store>("StoreName");
+
+    // Create a client
+    auto client = std::make_shared<Client>("ClientName", 10.0);
+
+    // Create a product
+    auto product = std::make_shared<Product>("P001", "Product1", 10.0);
+
+    // Define the invoice ID and issue date string
+    std::string invoice_id = "INV001";
+    std::string issue_date_str = "2023-10-01";
+
+    // Convert the issue date string to a std::chrono::system_clock::time_point
+    std::tm tm = {};
+    std::istringstream ss(issue_date_str);
+    ss >> std::get_time(&tm, "%Y-%m-%d");
+    auto issue_date = std::chrono::system_clock::from_time_t(std::mktime(&tm));
+
+    // Create an invoice
+    Invoice invoice(store, client, invoice_id, issue_date);
+
+    // Add the product to the invoice
+    invoice.addProduct(product);
+
+    // Print the invoice
+    std::cout << invoice.toString() << std::endl;
+
+    return 0;
+}
+
+
+/*
 using namespace bakery::warehouse;
 using namespace bakery::shop;
 using namespace bakery::product;
 using namespace bakery::client;
 using namespace bakery::invoice;
 
-/**
-* @brief Точка входа в программу
-* @return 0 в случае успеха
-*/
 int main()
 {
     setlocale(LC_ALL, "RU");
@@ -49,3 +90,4 @@ int main()
 
     return 0;
 }
+*/

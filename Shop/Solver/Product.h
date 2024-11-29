@@ -76,7 +76,7 @@ namespace bakery::product
 		* @param other_product - товар, с которым будем сравнивать.
 		* @return Возвращает true, если два объекта равны, в противном случае - false.
 		*/
-		bool operator==(const Product& other_product);
+		friend bool operator==(const Product& lhs, const Product& rhs);
 
 		/**
 		* @brief Переопределение оператора сдвига влево.
@@ -102,5 +102,10 @@ namespace bakery::product
 		* @return Возвращает цену товара (за 1 шт.).
 		*/
 		double GetPrice() const;
+
+		std::string GetItemNumber() const;
+
+		std::string GetProductName() const;
+
 	};
 }

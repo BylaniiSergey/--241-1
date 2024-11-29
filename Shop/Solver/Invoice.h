@@ -18,7 +18,7 @@ namespace bakery::invoice
     {
     private:
         std::string invoice_id;///< Идентификатор накладной
-        std::chrono::system_clock::time_point issue_date; ///< Дата выписки накладной
+        std::chrono::system_clock::time_point issue_date;
         std::shared_ptr<const bakery::shop::Store> store;
         std::shared_ptr<const bakery::client::Client> client;
         std::vector<std::shared_ptr<bakery::product::Product>> products; ///< Список товаров в накладной
@@ -35,7 +35,7 @@ namespace bakery::invoice
         Invoice(std::shared_ptr<const bakery::shop::Store> store,
             std::shared_ptr<const bakery::client::Client> client,
             const std::string& invoice_id,
-            const std::string& issue_date_str);
+            std::chrono::system_clock::time_point issue_date);
         
         /**
          * @brief Метод добавления продукта в накладную.
@@ -85,5 +85,15 @@ namespace bakery::invoice
          * @brief Деструктор (создан по умолчанию).
          */
         ~Invoice() = default;
+
+        std::string GetInvoiceId() const;
+
+        std::chrono::system_clock::time_point GetIssueDate() const;
+
+        std::shared_ptr<const bakery::shop::Store> GetStore() const;
+
+        std::shared_ptr<const bakery::client::Client> GetClient() const;
+
+        const std::vector<std::shared_ptr<bakery::product::Product>>& GetProducts() const;
     };
 }

@@ -39,5 +39,7 @@ namespace bakery::warehouse
         * @brief Деструктор (создан по умолчанию).
         */
         ~Warehouse() = default;
+
+        const std::vector<std::shared_ptr<bakery::product::Product>>& GetProducts();
     };
 }

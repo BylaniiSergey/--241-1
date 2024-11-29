@@ -32,6 +32,9 @@ namespace bakery::shop
 		std::string shop_address;
 
 	public:
+
+		Store(const std::string& name);
+
 		/**
 		* @brief Конструктор класса Store.
 		* Инициализирует новый объект магазина с заданными параметрами.
@@ -78,7 +81,7 @@ namespace bakery::shop
 		* @param other_shop - магазин, с которым будем сравнивать.
 		* @return Возвращает true, если два объекта равны, в противном случае - false.
 		*/
-		bool operator==(const Store& other_shop);
+		friend bool operator==(const Store& lhs, const Store& rhs);
 
 		/**
 		* @brief Переопределение оператора сдвига влево.
@@ -94,5 +97,9 @@ namespace bakery::shop
 		~Store() = default;
 
 		const std::string& GetName() const;
+
+		const std::string& GetAddress() const;
+
+		int GetTaxpayerId() const;
 	};
 }
