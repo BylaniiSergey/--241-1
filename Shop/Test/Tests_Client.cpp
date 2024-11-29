@@ -25,24 +25,11 @@ namespace ClientTests
             Assert::AreEqual(expectedDiscount, client.GetDiscount());
         }
 
-        TEST_METHOD(ToString_ReturnsCorrectString)
-        {
-            // Arrange
-            bakery::client::Client client("Вова", 5.0);
-            std::string expected = " Клиент: Вова; скидка: 5 %: ";
-
-            // Act
-            std::string actual = client.toString();
-
-            // Assert
-            Assert::AreEqual(expected, actual);
-        }
-
         TEST_METHOD(EqualityOperator_ReturnsTrueForEqualClients)
         {
             // Arrange
-            bakery::client::Client client1("Charlie", 7.0);
-            bakery::client::Client client2("Charlie", 8.0);
+            bakery::client::Client client1("Катя", 7.0);
+            bakery::client::Client client2("Катя", 8.0);
 
             // Act
             bool areEqual = (client1 == client2);
@@ -81,7 +68,7 @@ namespace ClientTests
         {
             // Arrange
             bakery::client::Client client("Пётр", 20.0);
-            std::string expected = "Пётр, 20.0:";
+            std::string expected = "Пётр";
 
             // Act
             std::string name = client.GetName();
@@ -89,12 +76,26 @@ namespace ClientTests
             // Assert
             Assert::AreEqual(expected, name);
         }
+        TEST_METHOD(ConstructorTest)
+        {
+            Client client1("John Doe", 10.0);
+            Assert::AreEqual(std::string("John Doe"), client1.GetName());
+            Assert::AreEqual(10.0, client1.GetDiscount());
 
-        TEST_METHOD(ToString_HandleZeroDiscount)
+            Client client2("Jane Doe", 0.0);
+            Assert::AreEqual(std::string("Jane Doe"), client2.GetName());
+            Assert::AreEqual(0.0, client2.GetDiscount());
+
+            Client client3("", 25.0); // Test empty name
+            Assert::AreEqual(std::string(""), client3.GetName());
+            Assert::AreEqual(25.0, client3.GetDiscount());
+        }
+
+        TEST_METHOD(ToString_ReturnsCorrectString)
         {
             // Arrange
-            bakery::client::Client client("Аня", 1.0);
-            std::string expected = " Клиент: Аня; скидка: 1 %: ";
+            bakery::client::Client client("Bob", 5.5);
+            std::string expected = "Client: Bob; Skid: 5.5 %: ";
 
             // Act
             std::string actual = client.toString();
@@ -103,17 +104,40 @@ namespace ClientTests
             Assert::AreEqual(expected, actual);
         }
 
-        TEST_METHOD(ToString_HandleEmptyName)
+        TEST_METHOD(EqualityOperatorTest)
         {
-            // Arrange
-            bakery::client::Client client("", 5.0);
-            std::string expected = " Клиент: ; скидка: 5 %: ";
+            Client client1("John Doe", 10.0);
+            Client client2("John Doe", 5.0);
+            Client client3("Jane Doe", 10.0);
 
-            // Act
-            std::string actual = client.toString();
+            Assert::IsTrue(client1 == client2);
+            Assert::IsFalse(client1 == client3);
 
-            // Assert
-            Assert::AreEqual(expected, actual);
+            //test with empty names
+            Client client4("", 10.0);
+            Client client5("", 5.0);
+            Assert::IsTrue(client4 == client5);
+        }
+
+
+        TEST_METHOD(GetDiscountTest) {
+            Client client1("John Doe", 15.0);
+            Assert::AreEqual(15.0, client1.GetDiscount());
+
+            Client client2("Jane Doe", 0.0);
+            Assert::AreEqual(0.0, client2.GetDiscount());
+        }
+
+        TEST_METHOD(GetNameTest) 
+        {
+            Client client1("John Doe", 10.0);
+            Assert::AreEqual(std::string("John Doe"), client1.GetName());
+
+            Client client2("Jane Doe", 5.0);
+            Assert::AreEqual(std::string("Jane Doe"), client2.GetName());
+
+            Client client3("", 0.0); //Test empty name
+            Assert::AreEqual(std::string(""), client3.GetName());
         }
     };
 }

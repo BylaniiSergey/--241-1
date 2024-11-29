@@ -6,6 +6,7 @@
 
 namespace bakery::client
 {
+
 	/**
 	* @brief Класс, представляющий клиента.
 	* Данный класс содержит информацию о клиенте, включая его имя и
@@ -63,7 +64,7 @@ namespace bakery::client
 		* @param other_client - клиент, с которым будем сравнивать.
 		* @return Возвращает true, если два объекта равны, в противном случае - false.
 		*/
-		bool operator==(const Client& other_product) const;
+		bool operator==(const Client& other_client) const;
 
 		/**
 		* @brief Переопределение оператора сдвига влево.

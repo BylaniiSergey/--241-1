@@ -120,17 +120,13 @@ namespace InvoiceTests
             }
         }
 
-        TEST_METHOD(ToString_ReturnsCorrectString)
-        {
+        TEST_METHOD(ToString_ReturnsCorrectString) {
             // Arrange
             auto store = std::make_shared<Store>("StoreName");
             auto client = std::make_shared<Client>("ClientName", 10.0);
             std::string invoice_id = "INV001";
-            std::string issue_date_str = "2023-10-01";
-
-            // Convert the issue date string to a std::chrono::system_clock::time_point
             std::tm tm = {};
-            std::istringstream ss(issue_date_str);
+            std::istringstream ss("2023-10-01");
             ss >> std::get_time(&tm, "%Y-%m-%d");
             auto issue_date = std::chrono::system_clock::from_time_t(std::mktime(&tm));
 

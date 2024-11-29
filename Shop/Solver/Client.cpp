@@ -8,13 +8,13 @@ namespace bakery::client
     std::string Client::toString() const
     {
         std::stringstream buffer;
-        buffer << " Клиент: " << this->name << "; скидка: " << this->discount << " %: ";
+        buffer << "Client: " << this->name << "; Skid: " << this->discount << " %: ";
         return buffer.str();
     }
 
-    bool Client::operator==(const Client& other_product) const
+    bool Client::operator==(const Client& other_client) const
     {
-        return this->name == other_product.name;
+        return this->name == other_client.name;
     }
 
     std::ostream& bakery::client::operator<<(std::ostream& os, const Client& product)

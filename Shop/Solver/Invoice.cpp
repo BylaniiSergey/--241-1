@@ -20,16 +20,29 @@ namespace bakery::invoice
         products.push_back(product);
     }
 
-    std::string Invoice::toString() const
-    {
+    std::string Invoice::toString() const {
         std::ostringstream ss;
-        ss << "Накладная ID: " << invoice_id << " от " << issue_date << "\n";
-        std::time_t now_time = std::chrono::system_clock::to_time_t(issue_date);
+        ss << "Накладная ID: " << invoice_id << " от ";
+
+        std::time_t t = std::chrono::system_clock::to_time_t(issue_date);
+        std::tm tm; //Временная переменная
+
+        // Выделение памяти для буфера
+        std::tm* ptm = new std::tm;
+
+        if (localtime_s(ptm, &t) != 0) {
+            //Обработка ошибки, например, выброс исключения
+            throw std::runtime_error("Ошибка при использовании localtime_s");
+        }
+
+        ss << std::put_time(ptm, "%Y-%m-%d") << "\n";
+
+        delete ptm; //Освобождение памяти
+
         ss << "Магазин: " << (*store).GetName() << "\n";
         ss << "Клиент: " << (*client).GetName() << "\n";
         ss << "Список товаров:\n";
-        for (const auto& product : products)
-        {
+        for (const auto& product : products) {
             ss << "- " << product->toString() << "\n";
         }
         ss << "Общая стоимость: " << GetTotalCost() << " руб.\n";
