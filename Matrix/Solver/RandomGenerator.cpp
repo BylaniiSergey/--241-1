@@ -1,4 +1,4 @@
-#include "RandomGenerator.h"
+﻿#include "RandomGenerator.h"
 
 miit::algebra::RandomGenerator::RandomGenerator(const int min, const int max)
 {

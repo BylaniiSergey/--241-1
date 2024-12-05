@@ -1,4 +1,4 @@
-#include <iostream>
+Ôªø#include <iostream>
 #include <locale>
 #include "..//Solver/Matrix.h"
 #include "..//Solver/RandomGenerator.h"
@@ -8,19 +8,23 @@
 
 using namespace miit::algebra;
 
+/**
+* @brief –¢–æ—á–∫–∞ –≤—Ö–æ–¥–∞ –≤ –ø—Ä–æ–≥—Ä–∞–º–º—É
+* @return 0 –≤ —Å–ª—É—á–∞–µ —É—Å–ø–µ—Ö–∞
+*/
 int main()
 {
     setlocale(LC_ALL, "RU");
     int rows, cols;
-    std::cout << "¬‚Â‰ËÚÂ ÍÓÎË˜ÂÒÚ‚Ó ÒÚÓÍ: ";
+    std::cout << "–í–≤–µ–¥–∏—Ç–µ –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —Å—Ç—Ä–æ–∫: ";
     std::cin >> rows;
-    std::cout << "¬‚Â‰ËÚÂ ÍÓÎË˜ÂÒÚ‚Ó ÒÚÓÎ·ˆÓ‚: ";
+    std::cout << "–í–≤–µ–¥–∏—Ç–µ –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —Å—Ç–æ–ª–±—Ü–æ–≤: ";
     std::cin >> cols;
 
     Matrix matrix(rows, cols);
 
     int choice;
-    std::cout << "¬˚·ÂËÚÂ ÒÔÓÒÓ· Á‡ÔÓÎÌÂÌËˇ Ï‡ÚËˆ˚ (1 - ÒÎÛ˜‡ÈÌ˚Ï Ó·‡ÁÓÏ, 2 - ‚Û˜ÌÛ˛):";
+    std::cout << "–í—ã–±–µ—Ä–∏—Ç–µ —Å–ø–æ—Å–æ–± –∑–∞–ø–æ–ª–Ω–µ–Ω–∏—è –º–∞—Ç—Ä–∏—Ü—ã (1 - —Å–ª—É—á–∞–π–Ω—ã–º –æ–±—Ä–∞–∑–æ–º, 2 - –≤—Ä—É—á–Ω—É—é):";
     std::cin >> choice;
 
     if (choice == 1)
@@ -35,23 +39,23 @@ int main()
     }
     else
     {
-        std::cerr << "ÕÂ‚ÂÌ˚È ‚˚·Ó!" << std::endl;
+        std::cerr << "–ù–µ–≤–µ—Ä–Ω—ã–π –≤—ã–±–æ—Ä!" << std::endl;
         return 1;
     }
 
-    std::cout << "»ÒıÓ‰Ì‡ˇ Ï‡ÚËˆ‡:" << std::endl;
+    std::cout << "–ò—Å—Ö–æ–¥–Ω–∞—è –º–∞—Ç—Ä–∏—Ü–∞:" << std::endl;
     matrix.print(std::cout);
 
     ExerciseTask1 task1(matrix, *dynamic_cast<Generator*>(new RandomGenerator(1, 100)));
     task1.Task1();
 
-    std::cout << "Ã‡ÚËˆ‡ ÔÓÒÎÂ ‚˚ÔÓÎÌÂÌËˇ Á‡‰‡˜Ë 1:" << std::endl;
+    std::cout << "–ú–∞—Ç—Ä–∏—Ü–∞ –ø–æ—Å–ª–µ –≤—ã–ø–æ–ª–Ω–µ–Ω–∏—è –∑–∞–¥–∞—á–∏ 1:" << std::endl;
     matrix.print(std::cout);
 
     ExerciseTask2 task2(matrix, *dynamic_cast<Generator*>(new RandomGenerator(1, 100)));
     task2.Task2();
 
-    std::cout << "Ã‡ÚËˆ‡ ÔÓÒÎÂ ‚˚ÔÓÎÌÂÌËˇ Á‡‰‡ÌËˇ 2:" << std::endl;
+    std::cout << "–ú–∞—Ç—Ä–∏—Ü–∞ –ø–æ—Å–ª–µ –≤—ã–ø–æ–ª–Ω–µ–Ω–∏—è –∑–∞–¥–∞–Ω–∏—è 2:" << std::endl;
     matrix.print(std::cout);
 
     return 0;

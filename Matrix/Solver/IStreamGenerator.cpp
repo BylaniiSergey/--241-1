@@ -1,9 +1,6 @@
-#include "IStreamGenerator.h"
+﻿#include "IStreamGenerator.h"
 
-miit::algebra::IStreamGenerator::IStreamGenerator(std::istream& in)
-	: in{ in }
-{
-}
+miit::algebra::IStreamGenerator::IStreamGenerator(std::istream& in): in{ in } {}
 
 int miit::algebra::IStreamGenerator::generate()
 {

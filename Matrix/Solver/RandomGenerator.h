@@ -1,31 +1,38 @@
-#pragma once
+﻿#pragma once
 
 #include "Generator.h"
 #include <random>
 
 namespace miit::algebra
 {
-	/**
-	* @brief
-	*/
-	class RandomGenerator : public Generator
-	{
-	private:
-		std::uniform_int_distribution<int> distribution;
-		std::mt19937 generator;
+    /**
+    * @brief Класс RandomGenerator, реализующий интерфейс Generator для генерации случайных целых чисел.
+    */
+    class RandomGenerator : public Generator
+    {
+    private:
+        /**
+        * @brief Объект распределения для генерации случайных чисел в заданном диапазоне.
+        */
+        std::uniform_int_distribution<int> distribution;
 
-	public:
-		/**
-		* @brief
-		* @param min
-		* @param max
-		*/
-		RandomGenerator(const int min, const int max);
+        /**
+        * @brief Объект генератора случайных чисел.
+        */
+        std::mt19937 generator;
 
-		/**
-		* @brief
-		*/
-		int generate() override;
-	};
+    public:
+        /**
+        * @brief Конструктор класса RandomGenerator.
+        * @param min Минимальное значение диапазона генерации.
+        * @param max Максимальное значение диапазона генерации.
+        */
+        RandomGenerator(const int min, const int max);
+
+        /**
+        * @brief Метод для генерации случайного целого числа.
+        * @return Сгенерированное случайное целое число.
+        */
+        int generate() override;
+    };
 }
-

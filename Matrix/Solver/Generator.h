@@ -1,21 +1,22 @@
-#pragma once
+﻿#pragma once
 
 namespace miit::algebra
 {
-	/**
-	* @brief
-	*/
-	class Generator
-	{
-	public:
-		/**
-		* @brief
-		*/
-		virtual ~Generator() = 0 {};
+    /**
+    * @brief јбстрактный базовый класс Generator.
+    */
+    class Generator
+    {
+    public:
+        /**
+        * @brief ¬иртуальный деструктор.
+        */
+        virtual ~Generator() = 0 {};
 
-		/**
-		* @brief
-		*/
-		virtual int generate() = 0;
-	};
+        /**
+        * @brief „исто виртуальный метод дл¤ генерации значени¤.
+        * @return —генерированное значение типа int.
+        */
+        virtual int generate() = 0;
+    };
 }

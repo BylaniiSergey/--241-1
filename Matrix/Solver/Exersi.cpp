@@ -1,4 +1,4 @@
-#include "Exercise.h"
+﻿#include "Exercise.h"
 
 namespace miit::algebra
 {
