@@ -44,13 +44,14 @@ int main()
 
     std::cout << "Исходная матрица:" << std::endl;
     matrix.print(std::cout);
-
+    
     Exercise exercise(matrix, *dynamic_cast<Generator*>(new RandomGenerator(1, 100)));
     std::cout << "Матрица после 1 задания:" << std::endl;
-    std::cout << exercise.Task1();
+    std::cout << exercise.Task1().toString();
 
     std::cout << "Матрица после 2 задания:" << std::endl;
-    std::cout << exercise.Task2();
-
+    std::cout << exercise.Task2().toString();
+    
+ 
     return 0;
 }

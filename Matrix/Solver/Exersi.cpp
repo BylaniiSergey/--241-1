@@ -4,7 +4,7 @@ namespace miit::algebra
 {
     Exercise::Exercise(Matrix& matrix, Generator& generator) : matrix(matrix), generator(generator) {}
 
-    std::string Exercise::Task1()
+    Matrix Exercise::Task1()
     {
         for (int i = 0; i < matrix.getRows(); ++i)
         {
@@ -24,11 +24,11 @@ namespace miit::algebra
                 }
             }
         }
-        return matrix.toString();
+        return matrix;
 
     }
 
-    std::string Exercise::Task2()
+    Matrix Exercise::Task2()
     {
         std::vector<int> max_cols;
         for (int j = 0; j < matrix.getCols(); ++j)
@@ -60,13 +60,6 @@ namespace miit::algebra
                 matrix[i].insert(matrix[i].begin() + col + 1, 0);
             }
         }
-        return matrix.toString();
-    }
-
-    std::string Exercise::toString() const
-    {
-        std::stringstream oss;
-        oss << "Matrix after Task1:\n" << matrix.toString() << "\n";
-        return oss.str();
+        return matrix;
     }
 }

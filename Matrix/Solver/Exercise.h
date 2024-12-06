@@ -39,12 +39,12 @@ namespace miit::algebra
         /**
         * @brief метод для выполнения задачи Task1.
         */
-        std::string Task1();
+        Matrix Task1();
 
         /**
         * @brief метод для выполнения задачи Task2.
         */
-       std::string Task2();
+       Matrix Task2();
 
        /**
        * @brief Возвращает строковое представление задачи.
