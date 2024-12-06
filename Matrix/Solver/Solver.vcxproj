@@ -132,16 +132,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Exercise.h" />
-    <ClInclude Include="ExerciseTask1.h" />
-    <ClInclude Include="ExerciseTask2.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="IStreamGenerator.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="RandomGenerator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ExerciseTask1.cpp" />
-    <ClCompile Include="ExerciseTask2.cpp" />
     <ClCompile Include="Exersi.cpp" />
     <ClCompile Include="IStreamGenerator.cpp" />
     <ClCompile Include="Matrix.cpp" />

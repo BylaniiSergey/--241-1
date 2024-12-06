@@ -2,6 +2,8 @@
 
 #include "Matrix.h"
 #include "Generator.h"
+#include <string>
+#include <sstream>
 
 namespace miit::algebra
 {
@@ -32,16 +34,22 @@ namespace miit::algebra
         /**
         * @brief виртуальный деструктор.
         */
-        virtual ~Exercise() = default;
+        ~Exercise() = default;
 
         /**
-        * @brief чисто виртуальный метод для выполнения задачи Task1.
+        * @brief метод для выполнения задачи Task1.
         */
-        virtual void Task1() = 0;
+        std::string Task1();
 
         /**
-        * @brief яисто виртуальный метод для выполнения задачи Task2.
+        * @brief метод для выполнения задачи Task2.
         */
-        virtual void Task2() = 0;
+       std::string Task2();
+
+       /**
+       * @brief Возвращает строковое представление задачи.
+       * @return Строковое представление задачи.
+       */
+       std::string toString() const;
     };
 }

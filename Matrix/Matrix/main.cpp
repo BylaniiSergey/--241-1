@@ -3,8 +3,7 @@
 #include "..//Solver/Matrix.h"
 #include "..//Solver/RandomGenerator.h"
 #include "..//Solver/IStreamGenerator.h"
-#include "..//Solver/ExerciseTask1.h"
-#include "..//Solver/ExerciseTask2.h"
+#include "..//Solver/Exercise.h"
 
 using namespace miit::algebra;
 
@@ -46,17 +45,12 @@ int main()
     std::cout << "Исходная матрица:" << std::endl;
     matrix.print(std::cout);
 
-    ExerciseTask1 task1(matrix, *dynamic_cast<Generator*>(new RandomGenerator(1, 100)));
-    task1.Task1();
+    Exercise exercise(matrix, *dynamic_cast<Generator*>(new RandomGenerator(1, 100)));
+    std::cout << "Матрица после 1 задания:" << std::endl;
+    std::cout << exercise.Task1();
 
-    std::cout << "Матрица после выполнения задачи 1:" << std::endl;
-    matrix.print(std::cout);
-
-    ExerciseTask2 task2(matrix, *dynamic_cast<Generator*>(new RandomGenerator(1, 100)));
-    task2.Task2();
-
-    std::cout << "Матрица после выполнения задания 2:" << std::endl;
-    matrix.print(std::cout);
+    std::cout << "Матрица после 2 задания:" << std::endl;
+    std::cout << exercise.Task2();
 
     return 0;
 }

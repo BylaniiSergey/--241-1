@@ -1,7 +1,9 @@
 ﻿#pragma once
+
 #include "Generator.h"
 #include <vector>
 #include <iostream>
+#include <string>
 
 namespace miit::algebra
 {
@@ -102,5 +104,11 @@ namespace miit::algebra
         * @param os Поток вывода, в который будет выведено содержимое матрицы.
         */
         void print(std::ostream& os) const;
+
+        /**
+        * @brief Возвращает строковое представление матрицы.
+        * @return Строковое представление матрицы.
+        */
+        std::string toString() const;
     };
 }
