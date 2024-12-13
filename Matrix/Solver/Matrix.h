@@ -100,15 +100,13 @@ namespace miit::algebra
         void fill(Generator& generator);
 
         /**
-        * @brief Выводит содержимое матрицы в поток вывода.
-        * @param os Поток вывода, в который будет выведено содержимое матрицы.
-        */
-        void print(std::ostream& os) const;
-
-        /**
         * @brief Возвращает строковое представление матрицы.
         * @return Строковое представление матрицы.
         */
         std::string toString() const;
+
+        friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
+
+        Matrix(int rows, int cols,  Generator& generator);
     };
 }

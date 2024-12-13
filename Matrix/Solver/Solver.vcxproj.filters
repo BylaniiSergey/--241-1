@@ -18,7 +18,7 @@
     <ClInclude Include="Matrix.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Exercise.h">
+    <ClInclude Include="MyExercise.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Generator.h">
@@ -30,18 +30,24 @@
     <ClInclude Include="IStreamGenerator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="Exercise_vertual.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Matrix.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Exersi.cpp">
+    <ClCompile Include="MyExercise.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RandomGenerator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="IStreamGenerator.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Exercise_vertual.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
